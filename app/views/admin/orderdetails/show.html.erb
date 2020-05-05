@@ -1,0 +1,32 @@
+<% provide(:title, t("admin.order.orderdetail")) %>
+<h1>Order Detail</h1>
+<% @orders.each do |order| %>
+  <h6><%= t "admin.order.name" %> <%= order.user.name %><br></h6>
+  <h6><%= t "admin.order.total" %> <%= order.total_amount %><br></h6>
+  <h6>
+  <%= t "admin.order.status" %>
+    <span class="label label-warning" >
+      <% if  order.status == Settings.order %>
+        <%= t "admin.order.handled" %>
+      <% else %>
+        <%= t "admin.order.nothandle" %>
+      <% end %>
+    </span>
+  </h6>
+  <% break %>
+<% end %>
+<div class="table-responsive">
+<table class="table">
+    <thead>
+      <tr>
+        <th><%= t "admin.order.pro_id" %></th>
+        <th><%= t "admin.order.pro_name" %></th>
+        <th><%= t "admin.order.image" %></th>
+        <th><%= t "admin.order.pro_quan" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "orderdetail", collection: @order_details %>
+    </tbody>
+</table>
+</div>

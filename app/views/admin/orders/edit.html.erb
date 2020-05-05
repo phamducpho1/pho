@@ -1,0 +1,22 @@
+<% provide(:title, (t "admin.order.titleupdate")) %>
+<h1><%= t "admin.order.titleupdate" %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for [:admin, @order] do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+
+      <%= f.label :status %>
+      <%= f.select :status, Order.statuses.map{|key, value| [t("status_#{key}"), key]},
+        {}, {class: "form-control"} %>
+
+      <%= f.label :phone %>
+      <%= f.number_field :phone, class: "form-control" %>
+
+      <%= f.label :address %>
+      <%= f.text_field :address, class: "form-control" %>
+
+      <%= f.submit (t "admin.order.update"), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

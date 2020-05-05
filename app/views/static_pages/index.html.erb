@@ -1,0 +1,50 @@
+<div class="container">
+  <div id="content" class="space-top-none">
+    <div class="main-content">
+      <div class="space20">&nbsp;</div>
+      <div class="row">
+        <div class="col-sm-3">
+            <%= render "layouts/headerview" %>
+        </div>
+        <div class="col-sm-9">
+          <div class="beta-products-list">
+            <div class="beta-products-details">
+              <div class="beta-products-details">
+                <p class="pull-left"><%= @products.count%><%=t "static_pages.home.find"%></p>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            <div class="row">
+            <% @products.each do |product| %>
+              <div class="col-sm-3">
+                <div class="single-item">
+                  <div class="single-item-header">
+                    <%= image_tag(product.image, size:Settings.size.img) %>
+                  </div>
+                  <div class="single-item-body">
+                    <p class="single-item-title"><%= product.name%></p>
+                    <p class="single-item-price">
+                      <span><%= product.price%></span>
+                    </p>
+                  </div>
+                  <div class="single-item-caption">
+                    <%= link_to line_items_path(product_id: product.id), method: :post, class: "add-to-cart pull-left", remote: true do %>
+                      <i class="fa fa-shopping-cart"></i>
+                    <% end %>
+                    <%= link_to(product, class: "beta-btn primary") do %>
+                      <%=t"static_pages.home.details"%>
+                      <i class="fa fa-chevron-right"></i>
+                    <% end %>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="space50">&nbsp;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

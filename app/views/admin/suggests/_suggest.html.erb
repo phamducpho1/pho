@@ -1,0 +1,16 @@
+<tr>
+  <td><%= suggest.user.name %></td>
+  <td><%= suggest.user.phone %></td>
+  <td><%= suggest.user.address %></td>
+  <td><%= suggest.created_at.to_date %></td>
+  <td><%= suggest.updated_at.to_date %></td>
+  <td>
+  <% if can? [:destroy, :show], suggest %>
+    <%= link_to "", admin_suggest_path(suggest), method: :delete,
+      class: "fa fa-trash-o btn btn-danger", data: {confirm: (t "users.index.sure") } %>
+    <%= link_to "", admin_suggest_path(suggest), class: "fa fa-info btn btn-danger" %>
+  <% end %>
+  </td>
+</tr>
+
+

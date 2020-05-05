@@ -1,0 +1,20 @@
+<% provide(:title, t("users.index.titlecategory")) %>
+<h1><%= t "users.index.titlecategory" %></h1>
+<div class="table-responsive">
+<table class="table">
+    <%= link_to "", new_admin_category_path, class: "fa fa-plus fa-1x  btn btn-primary" %>
+    <thead>
+      <tr>
+        <th><%= t "admin.id" %></th>
+        <th><%= t "admin.name" %></th>
+        <th><%= t "admin.createat" %></th>
+        <th><%= t "admin.update" %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render "category" %>
+    </tbody>
+</table>
+</div>
+

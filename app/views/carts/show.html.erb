@@ -1,0 +1,54 @@
+<h2><%= t"carts.show.cart" %></h2>
+<div class="row">
+  <%= link_to t("carts.show.delete_cart"), @cart, method: :delete,
+  data: {confirm: t("carts.show.eror")} , class: "btn btn-info" %>
+</div>
+<div class="table-responsive cart_info">
+  <table class="table table-condensed">
+    <thead>
+      <tr class="cart_menu">
+        <td class="image"><%= t"carts.show.image" %></td>
+        <td class="price"><%= t"carts.show.name" %></td>
+        <td class="quantity"><%= t"carts.show.quanlity" %></td>
+        <td class="total"><%= t"carts.show.price" %></td>
+        <td class="total"><%= t"carts.show.sum" %></td>
+        <td><%= t"carts.show.action" %></td>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "cart", collection: @cart.line_items %>
+    </tbody>
+  </table>
+</div>
+<div class="cart-totals pull-right">
+  <div class="cart-totals-row">
+    <h5 class="cart-total-title"><%= t"carts.show.cart_total" %>
+    </h5>
+  </div>
+  <div class="cart-totals-row">
+    <span>
+      <%= t"carts.show.sub_total"%>
+    </span>
+    <span>
+      <%= number_to_currency(@cart.total_price) %>
+    </span>
+  </div>
+  <div class="cart-totals-row">
+    <span>
+      <%= t"carts.show.ship"%>
+    </span>
+    <span>
+      <%= t"carts.show.free"%>
+    </span>
+  </div>
+</div>
+<div class="row">
+    <%= link_to root_path, class: "btn btn-warning" do %>
+      <%= t "carts.show.continue" %>
+      <i class="fa fa-angle-left" aria-hidden="true" ></i>
+    <% end %>
+    <%= link_to new_order_path, class: "btn btn-warning" do %>
+      <%= t "carts.show.order" %>
+      <i class="fa fa-angle-left" aria-hidden="true" ></i>
+    <% end %>
+</div>

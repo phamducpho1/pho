@@ -1,0 +1,31 @@
+<h1><%= t "orders.new.title" %></h1>
+<div class="row">
+  <%= link_to cart_path(session[:cart_id]), class: "btn btn-warning" do %>
+    <%= t "orders.new.back" %>
+    <i class="fa fa-angle-left" aria-hidden="true" ></i>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @oder do |f| %>
+      <%= render "shared/error_messages" , object: f.object %>
+
+      <%= f.label :phone %>
+      <%= f.text_field :phone, value: current_user.phone, class: "form-control" %>
+
+      <%= f.label :address %>
+      <%= f.text_field :address, value: current_user.address, class: "form-control" %>
+
+      <%= f.label :total_amount %>
+      <%= f.number_field :total_amount, value: @total, readonly: true,
+        class: "form-control" %>
+
+      <%= f.hidden_field :user_id , value: @user %>
+
+      <%= f.hidden_field :status , value: Settings.status.default %>
+
+      <%= f.submit t("orders.new.order"), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+

@@ -1,0 +1,18 @@
+<% provide(:title, t("admin.order.history")) %>
+<h1><%= t "admin.order.history" %></h1>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= t "admin.order.pro_name" %></th>
+        <th><%= t "admin.order.image" %></th>
+        <th><%= t "admin.order.pro_price" %></th>
+        <th><%= t "admin.order.pro_quan" %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "history", collection: @order_details, as: :orderdetail %>
+    </tbody>
+  </table>
+</div>

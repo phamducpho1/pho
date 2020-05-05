@@ -1,0 +1,63 @@
+<%= form_tag(static_pages_path, method: :get, class: "navbar-form") do %>
+  <div class="input-group">
+    <%= text_field_tag "search" , nil, class: "form-control src" %>
+    <div class="input-group-btn">
+      <%= submit_tag t("layouts._header.search"), class: "btn btn-default" %>
+    </div>
+  </div>
+<% end %>
+<div class="left-sidebar">
+  <h5><%= t "static_pages.home.product" %></h5>
+  <div class="panel-group category-products" id="accordian">
+    <div class="panel panel-default">
+      <% @categories.each do |cate| %>
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <i class="fa fa-star">
+              <%= link_to cate.name, controller: "static_pages",
+                action: "show", id: cate.id %>
+            </i>
+          </h4>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="left-sidebar">
+  <h6><%= t "static_pages.home.search" %></h6>
+  <%= form_tag(static_pages_path, method: :get) do %>
+    <%= collection_radio_buttons "reson", "price",
+      Settings.controllers.price.map {|k,v| [v, t("#{k}")]}, :first, :last,
+        { checked: Settings.controllers.products["all"] } do |b| %>
+      <div class="radio">
+        <%= b.radio_button %>
+        <%= b.label(class: "label-size") %>
+      </div>
+    <% end %>
+    <div class="btn success">
+      <%= submit_tag t("static_pages.home.submit"), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+<div class="space20">&nbsp;</div>
+<div class="left-sidebar">
+  <% if @runouts.present? %>
+    <h6><%= t "static_pages.home.hot" %></h6>
+    <div class="brands_products">
+      <% @runouts.each do |cate| %>
+         <div class="brands-name">
+           <div class="text-center">
+            <%= image_tag("Icon_new.gif", class: "girl img-responsive") %>
+            <%= image_tag(cate.image, size: Settings.image.hot ) %>
+            <h6><%= cate.price%><span class= "seting-col">$</span></h6>
+            <h6><%= cate.name%></h6>
+            <%= link_to(cate, class: "beta-btn primary") do %>
+              <%=t"static_pages.home.details"%>
+              <i class="fa fa-chevron-right"></i>
+            <% end %>
+           </div>
+         </div>
+       <% end %>
+    </div>
+  <% end %>
+</div>

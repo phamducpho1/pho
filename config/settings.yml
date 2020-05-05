@@ -1,0 +1,65 @@
+user:
+  name:
+    maximum_length: 50
+  email:
+    maximum_length: 50
+  password:
+    minimum_length: 6
+  reset:
+    pass_word: 2
+sessions:
+  check: "1"
+gravatar:
+  size_option: 20
+per_page:
+  config: 4
+new_product:
+  config: 5
+related_product:
+  config: 3
+image:
+  size: 5
+  admin: 50
+  hot: 70
+micropost:
+  content:
+    max_length: 140
+picture:
+  accpect: "image/jpeg,image/gif,image/png"
+size:
+  cart: 100
+  img: 250
+  img_product: 200
+product:
+  price: 1.0
+  quanlity: 1
+  information: 255
+status:
+  default: 1
+order: 1
+oder:
+  minimum_length: 10
+  maxnimum_length: 11
+admin:
+  value: 1
+suggest:
+  per_page: 10
+controllers:
+  products:
+    all: "all"
+    to: "to"
+  price:
+      all: "all"
+      below 200: "1 to 200"
+      200_to_1_milion: "200 to 100000"
+      over milion: "110000 to 1000000"
+comment:
+  config: 3
+show:
+  quanlity: 0
+text:
+  cols: 50
+cookie:
+  life: 10
+round:
+  get: 1

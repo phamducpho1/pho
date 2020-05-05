@@ -1,0 +1,20 @@
+<% provide(:title, t("admin.suggest.title")) %>
+<h1><%= t "admin.suggest.title" %></h1>
+<div class="table-responsive">
+<table class="table">
+    <thead>
+      <tr>
+        <th><%= t "admin.order.person" %></th>
+        <th><%= t "admin.order.phone" %></th>
+        <th><%= t "admin.order.address" %></th>
+        <th><%= t "admin.order.create" %></th>
+        <th><%= t "admin.order.update" %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @suggests %>
+    </tbody>
+    <%= will_paginate @suggests %>
+</table>
+</div>

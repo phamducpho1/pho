@@ -1,0 +1,22 @@
+<% provide(:title, t("admin.order.title")) %>
+<h1><%= t "admin.order.title" %></h1>
+<div class="table-responsive">
+  <table class="table">
+    <%= link_to (t "admin.statistic.title"), admin_statistics_path, class: "btn btn-primary" %>
+    <thead>
+      <tr>
+        <th><%= t "admin.order.person" %></th>
+        <th><%= t "admin.order.phone" %></th>
+        <th><%= t "admin.order.address" %></th>
+        <th><%= t "admin.order.totala" %></th>
+        <th><%= t "admin.order.status" %></th>
+        <th><%= t "admin.order.create" %></th>
+        <th><%= t "admin.order.update" %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "order", collection: @orders %>
+    </tbody>
+  </table>
+</div>

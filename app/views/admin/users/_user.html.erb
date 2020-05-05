@@ -1,0 +1,24 @@
+<tr>
+  <td><%= user.id %></td>
+  <td><%= user.name %></td>
+  <td><%= user.phone %></td>
+  <td><%= user.address %></td>
+  <td><%= user.created_at.to_date %></td>
+  <td><%= user.updated_at.to_date %></td>
+  <td>
+  <% if current_user.admin? && !current_user?(user) %>
+    <% if can? :destroy, user %>
+      <%= link_to admin_user_path(user), method: :delete,
+        class: "fa fa-trash-o btn btn-danger", data: {confirm: (t "users.index.sure") } do %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% if can? :update, user %>
+    <%= link_to edit_admin_user_path(user), class: "fa fa-pencil-square-o btn btn-danger" do %>
+  <% end %>
+  <% end %>
+  </td>
+</tr>
+
+
+

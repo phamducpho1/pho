@@ -1,0 +1,18 @@
+<% @categories .each do |category| %>
+  <tr>
+    <td><%= category.id %></td>
+    <td><%= category.name %></td>
+    <td><%= category.created_at.to_date %></td>
+    <td><%= category.updated_at.to_date  %></td>
+    <td>
+    <% if can? [:destroy, :update], category %>
+      <%= link_to admin_category_path(category), method: :delete,
+        class: "fa fa-trash-o btn btn-danger", data: {confirm: (t "users.index.sure") } do %>
+      <% end %>
+      <%= link_to edit_admin_category_path(category),
+        class: "fa fa-pencil-square-o btn btn-danger" do %>
+      <% end %>
+    <% end %>
+    </td>
+  </tr>
+<% end %>

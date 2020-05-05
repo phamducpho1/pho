@@ -1,0 +1,24 @@
+<tr>
+    <td><%= order.user.name %></td>
+    <td><%= order.phone %></td>
+    <td><%= order.address %></td>
+    <td><%= order.total_amount %></td>
+    <td>
+    <span class="label label-warning">
+      <%= order.status %>
+    </span>
+    </td>
+    <td><%= order.created_at.to_date %></td>
+    <td><%= order.updated_at.to_date %></td>
+    <td>
+    <% if can? [:destroy, :show, :update], order %>
+      <%= link_to "", admin_order_path(order), method: :delete,
+        class: "fa fa-trash-o btn btn-danger", data: {confirm: (t "users.index.sure") } %>
+      <%= link_to "", admin_orderdetail_path(order), class: "fa fa-info btn btn-danger" %>
+      <%= link_to "", edit_admin_order_path(order.id),
+        class: "fa fa-pencil-square-o btn btn-danger" %>
+    <% end %>
+    </td>
+</tr>
+
+

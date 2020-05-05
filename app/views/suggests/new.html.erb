@@ -1,0 +1,42 @@
+<% provide(:title, (t "suggest.title")) %>
+<div class="row">
+  <div class="col-sm-8">
+    <div class="contact-form">
+      <h2 class="title text-center"><%= t "admin.suggest.titleuser"%></h2>
+      <div class="status alert alert-success" style="display: none"></div>
+        <div class="form-group col-md-12">
+          <%= form_for @suggest do |f| %>
+            <%= render "shared/error_messages" , object: f.object %>
+
+            <% if current_user %>
+              <%= f.hidden_field :user_id, value: current_user.id%>
+            <% end %><br>
+
+            <%= f.label :content %>
+            <%= f.text_area :content, {class: "form-control", rows: "8",
+              placeholder: (t "suggest.yourmess")} %>
+
+            <%= f.submit (t "suggest.submit"), class: "btn btn-primary" %>
+          <% end %>
+        </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="contact-info">
+      <h2 class="title text-center"><%= t "admin.suggest.contact" %></h2>
+      <address>
+        <p><%= t "admin.suggest.topic" %></p>
+        <p><%= t "admin.suggest.locate" %></p>
+        <p><%= t "admin.suggest.by" %></p>
+        <p><%= t "admin.suggest.mobile" %></p>
+        <p><%= t "admin.suggest.fax" %></p>
+        <p><%= t "admin.suggest.mail" %></p>
+      </address>
+      <div class="social-networks">
+      <ul>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3833.970430767059!2d108.21120294987593!3d16.06702414371142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142184a810229eb%3A0x155a6ca1b747012!2sBig+C+Supermarket+Da+Nang!5e0!3m2!1sen!2sin!4v1508122960988" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+      </ul>
+      </div>
+    </div>
+  </div>
+</div>
